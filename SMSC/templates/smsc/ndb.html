@@ -1,8 +1,10 @@
 
-
+{% extends "smsc/wrapper.html" %}
  {% block content %}
 
 </div>
+     <div class="container">
+     <div class="container-fluid">
     <div class="form-group">
 <!--      <label for="exampleTextarea">Numbers</label>
               {% for CellNumbers in Numbers %}
@@ -10,9 +12,11 @@
               {% endfor %}
 -->
     {{ NameForm }}
+    </div>
+     </div>
         <br>
         <label for="exampleTextarea">Text SMS</label>
-    <textarea class="form-control" id="exampleTextarea" rows="3">123</textarea>
+    <textarea class="form-control" id="exampleTextarea" rows="3">Type sms</textarea>
     </div>
     <a href="/upload">Upload file</a>
 </div>
