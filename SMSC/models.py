@@ -5,6 +5,8 @@ from django.core.validators import RegexValidator
 
 # Create your models here.
 # Модель для Абонент
+
+
 class Abonent (models.Model):
     id = models.Index
     AbonentNumber = models.CharField(max_length=12)
@@ -30,3 +32,17 @@ class UploadFile(models.Model):
     description=models.CharField(max_length=255, blank=True)
     document = models.FileField(upload_to='media')
     uploadTime=models.DateTimeField(auto_now_add=True)
+
+
+
+# Numbers=CellNumbers.objects.all()
+# x=[]
+# context = {'Numbers': Numbers}
+# for CellNumbers in Numbers:
+#     x.append(CellNumbers.phone_number)
+# z=(", ".join(x))
+
+class Sends(models.Model):
+    NumberField=models.TextField()
+    #FileField=models.FileField(upload_to='media')
+    MessageField=models.TextField()

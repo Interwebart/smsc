@@ -1,24 +1,15 @@
-
 {% extends "smsc/wrapper.html" %}
  {% block content %}
 
-</div>
-     <div class="container">
-     <div class="container-fluid">
-    <div class="form-group">
 <!--      <label for="exampleTextarea">Numbers</label>
               {% for CellNumbers in Numbers %}
                  {{ CellNumbers.phone_number }},
               {% endfor %}
 -->
-    {{ NameForm }}
-    </div>
-     </div>
+{{ NameForm.NumberField }}<br>
+     {{ NameForm.MessageField }}
+
         <br>
-        <label for="exampleTextarea">Text SMS</label>
-    <textarea class="form-control" id="exampleTextarea" rows="3">Type sms</textarea>
-    </div>
-    <a href="/upload">Upload file</a>
-</div>
   <button type="button" class="btn btn-sm btn-block btn-success" onclick="">Send SMS</button>
+
  {% endblock %}

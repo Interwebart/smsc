@@ -3,6 +3,8 @@ from django.contrib.auth.decorators import login_required
 
 from SMSC.models import CellNumbers
 from SMSC.forms import NameForm, DocumentForm
+from .models import Account, Sends
+from .forms import AccountForm, NameForm
 
 
 # Create your views here.
@@ -11,8 +13,22 @@ def index(request):
     return render(request, 'smsc/index.html')
 
 @login_required
+# def account(request):
+#     return render(request, 'smsc/account.html')
 def account(request):
-    return render(request, 'smsc/account.html')
+    if request.method == "POST":
+        form = AccountForm(request.POST)
+        if form.is_valid():
+            blog_item = form.save(commit=False)
+            blog_item.save()
+    else:
+        form = AccountForm()
+    test=Account.objects.all()
+    context={'form':form, 'test':test}
+    return render(request, 'smsc/account.html', context)
+
+
+
 
 @login_required
 def billing(request):
@@ -25,7 +41,8 @@ def submit(request):
 @login_required
 def ndb(request):
     Numbers=CellNumbers.objects.all()
-    context = {'Numbers': Numbers, 'NameForm': NameForm}
+    Fields=Sends.objects.all()
+    context = {'Numbers': Numbers, 'NameForm': NameForm, 'Fl':Fields}
     return render(request, 'smsc/ndb.html', context)
 
 @login_required
